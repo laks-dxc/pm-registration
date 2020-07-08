@@ -1,0 +1,82 @@
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+		<h3><u>Create User</u></h3>
+	</div>
+</div>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+	<nz-form-item>
+		<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+		<nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid Name!">
+			<input nz-input formControlName="name" id="name" />
+        </nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Username</nz-form-label>
+		<nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid username!">
+			<input nz-input formControlName="username" id="username" />
+        </nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+		<nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+			<input nz-input formControlName="email" id="email" />
+        </nz-form-control>
+	</nz-form-item>
+	<nz-form-item>
+		<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+		<nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']"
+			nzErrorTip="Please input your phone number!">
+			<nz-input-group>
+				<ng-template #addOnBeforeTemplate>
+					<input [(ngModel)]="phoneCode" nz-input />
+
+					</ng-template>
+					<input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+          </nz-input-group>
+		</nz-form-control>
+	</nz-form-item>
+
+
+	<!-- <nz-form-item nz-row class="register-area">
+			<nz-form-control [nzSpan]="14" [nzOffset]="6">
+				<label nz-checkbox formControlName="agree">
+            <span>I have read the <a>agreement</a></span>
+          </label>
+			</nz-form-control>
+		</nz-form-item> -->
+	<nz-form-item nz-row class="register-area">
+		<nz-form-control [nzSpan]="14" [nzOffset]="6">
+			<button nz-button nzType="primary">Save</button>
+		</nz-form-control>
+	</nz-form-item>
+</form>
+
+<br>
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+		<h3><u>Manage Authorization</u></h3>
+	</div>
+</div>
+
+
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+    	<nz-form-label [nzSm]="6" [nzXs]="24" >Select Template</nz-form-label>
+		<nz-select [(ngModel)]="auth" style="width:300px;" (ngModelChange)="log($event)">
+			<nz-option nzValue="SuperUser" nzLabel="Super User"></nz-option>
+			<nz-option nzValue="Template1" nzLabel="Template 1"></nz-option>
+			<nz-option nzValue="custom" nzLabel="Custom"></nz-option>
+		</nz-select>
+	</div>
+</div>
+<br>
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+		<nz-tree-select style="width: 100%" [(ngModel)]="value" [disabled]="auth!='custom'" [nzNodes]="nodes"
+			(ngModelChange)="onChange($event)" nzShowSearch nzCheckable nzPlaceHolder="Please select"
+			[nzDefaultExpandAll]="true">
+		</nz-tree-select>
+	</div>
+</div>
