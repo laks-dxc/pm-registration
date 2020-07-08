@@ -21,7 +21,13 @@
 	<nz-form-item>
 		<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
 		<nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-			<input nz-input formControlName="email" id="email" />
+			<input nz-input formControlName="email" id="email" placeholder="@dxc.com / @vfsglobal.com" />
+      <ng-template #addOnBeforeTemplate>
+              <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+              </nz-select>
+            </ng-template>
         </nz-form-control>
 	</nz-form-item>
 	<nz-form-item>
@@ -64,7 +70,7 @@
 <div nz-row>
 	<div nz-col [nzSpan]="14" [nzOffset]="6">
     	<nz-form-label [nzSm]="6" [nzXs]="24" >Select Template</nz-form-label>
-		<nz-select  [(ngModel)]="auth" style="width:300px;" (ngModelChange)="log($event)">
+		<nz-select  [(ngModel)]="auth" style="width:150px;" (ngModelChange)="log($event)">
 			<nz-option nzValue="SuperUser" nzLabel="Super User"></nz-option>
 			<nz-option nzValue="Template1" nzLabel="Only Reports"></nz-option>
 			<nz-option nzValue="custom" nzLabel="Custom"></nz-option>
@@ -78,5 +84,50 @@
 			(ngModelChange)="onChange($event)" nzShowSearch nzCheckable nzPlaceHolder="Please select" nzAllowClear=false
 			[nzDefaultExpandAll]="true">
 		</nz-tree-select>
+	</div>
+</div>
+
+<br>
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+	<button nz-button nzType="primary">Save</button>
+
+	</div>
+</div>
+  <br>
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+		<h3><u>Mission / Country Access</u></h3>
+	</div>
+</div>
+
+<br>
+
+
+<div nz-row>
+	<div nz-col [nzSpan]="14" [nzOffset]="6">
+    	<nz-form-label [nzSm]="6" [nzXs]="24" >Mission</nz-form-label>
+		<nz-select   style="width:150px;"  >
+			<nz-option nzValue="Portugal" nzLabel="Portugal"></nz-option>
+			<nz-option nzValue="Finland" nzLabel="Finland"></nz-option>
+		</nz-select>
+        	<nz-form-label [nzSm]="6" [nzXs]="24"  [nzOffset]="1" >Country</nz-form-label>
+		<nz-select   style="width:150px;"  >
+			<nz-option nzValue="India" nzLabel="India"></nz-option>
+			<nz-option nzValue="China" nzLabel="China"></nz-option>
+			<nz-option nzValue="Pakistan" nzLabel="Pakistan"></nz-option>
+
+		</nz-select>
+        	<nz-form-label [nzSm]="6" [nzXs]="24"  [nzOffset]="1" >VACs / Branch</nz-form-label>
+
+    		<nz-select   style="width:500px;" nzMode="multiple" >
+			<nz-option nzValue="Mumbai - South" nzLabel="Mumbai - South"></nz-option>
+			<nz-option nzValue="Mumbai - North" nzLabel="Mumbai - North"></nz-option>
+			<nz-option nzValue="Chandigarh" nzLabel="Chandigarh"></nz-option>
+
+		</nz-select>
+	</div>
+  	<div nz-col [nzSpan]="14" >
+
 	</div>
 </div>

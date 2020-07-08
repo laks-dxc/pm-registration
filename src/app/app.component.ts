@@ -12,7 +12,7 @@ import {
 })
 export class NzDemoTreeSelectCheckableComponent {
   radioValue = "U";
-  value: string[] = [];
+  value: string[] = ["0-0", "1-0", "2-0"];
   phoneCode;
   nodes = [
     {
