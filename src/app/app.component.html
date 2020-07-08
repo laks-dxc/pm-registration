@@ -64,9 +64,9 @@
 <div nz-row>
 	<div nz-col [nzSpan]="14" [nzOffset]="6">
     	<nz-form-label [nzSm]="6" [nzXs]="24" >Select Template</nz-form-label>
-		<nz-select [(ngModel)]="auth" style="width:300px;" (ngModelChange)="log($event)">
+		<nz-select  [(ngModel)]="auth" style="width:300px;" (ngModelChange)="log($event)">
 			<nz-option nzValue="SuperUser" nzLabel="Super User"></nz-option>
-			<nz-option nzValue="Template1" nzLabel="Template 1"></nz-option>
+			<nz-option nzValue="Template1" nzLabel="Only Reports"></nz-option>
 			<nz-option nzValue="custom" nzLabel="Custom"></nz-option>
 		</nz-select>
 	</div>
@@ -74,8 +74,8 @@
 <br>
 <div nz-row>
 	<div nz-col [nzSpan]="14" [nzOffset]="6">
-		<nz-tree-select style="width: 100%" [(ngModel)]="value" [disabled]="auth!='custom'" [nzNodes]="nodes"
-			(ngModelChange)="onChange($event)" nzShowSearch nzCheckable nzPlaceHolder="Please select"
+		<nz-tree-select style="width: 100%" [(ngModel)]="value"  [nzNodes]="nodes"
+			(ngModelChange)="onChange($event)" nzShowSearch nzCheckable nzPlaceHolder="Please select" nzAllowClear=false
 			[nzDefaultExpandAll]="true">
 		</nz-tree-select>
 	</div>

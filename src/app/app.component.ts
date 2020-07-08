@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 
 @Component({
   selector: "nz-demo-tree-select-checkable",
   templateUrl: "./app.component.html"
 })
-
-
 export class NzDemoTreeSelectCheckableComponent {
-  radioValue = 'U'
-  value: string[] = ["0-0-0"];
-  phoneCode
+  radioValue = "U";
+  value: string[] = [];
+  phoneCode;
   nodes = [
     {
       title: "Access Management",
@@ -69,7 +72,6 @@ export class NzDemoTreeSelectCheckableComponent {
         }
       ]
     }
-   
   ];
 
   onChange($event: string[]): void {
@@ -87,7 +89,9 @@ export class NzDemoTreeSelectCheckableComponent {
 
   updateConfirmValidator(): void {
     /** wait for refresh value */
-    Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
+    Promise.resolve().then(() =>
+      this.validateForm.controls.checkPassword.updateValueAndValidity()
+    );
   }
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
@@ -98,7 +102,7 @@ export class NzDemoTreeSelectCheckableComponent {
     }
     return {};
   };
-  auth = 'custom'
+  auth = "SuperUser";
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
@@ -106,6 +110,11 @@ export class NzDemoTreeSelectCheckableComponent {
 
   log(event) {
     console.log(event);
+
+    if (event.toLowerCase() == "superuser") this.value = ["0-0", "1-0", "2-0"];
+     if (event.toLowerCase() == "template1") this.value = ["0-0-1", "2-0-1", "1-0-1"];
+     if (event.toLowerCase() == "custom") this.value = [];
+
   }
 
   constructor(private fb: FormBuilder) {}
@@ -118,8 +127,8 @@ export class NzDemoTreeSelectCheckableComponent {
       username: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
       nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, ],
+      phoneNumberPrefix: ["+86"],
+      phoneNumber: [null],
       website: [null, [Validators.required]],
       captcha: [null, [Validators.required]],
       agree: [false]
